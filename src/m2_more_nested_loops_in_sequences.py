@@ -1284,8 +1284,6 @@ def bigger_than_indices(numbers):
 # Our tests use the following to print error messages in red.
 # Do NOT change it.  You do NOT have to do anything with it.
 ###############################################################################
-
-
 def print_expected_result_of_test(
     arguments, expected, test_results, format_string, suffix=""
 ):
@@ -1317,14 +1315,17 @@ else:
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
-# The   try .. except   prevents error messages on the console from being
-# intermingled with ordinary output to the console.
+# The  IF  statement helps prevent   main   from running
+# when we are doing special testing within a testing framework.
+# The   try .. except   helps prevent error messages on the console
+# from being intermingled with ordinary output to the console.
 # -----------------------------------------------------------------------------
-try:
-    main()
-except Exception:
-    print("ERROR - While running this test,", color="red")
-    print("your code raised the following exception:", color="red")
-    print()
-    time.sleep(1)
-    raise
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception:
+        print("ERROR - While running this test,", color="red")
+        print("your code raised the following exception:", color="red")
+        print()
+        time.sleep(1)
+        raise
